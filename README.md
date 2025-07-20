@@ -56,7 +56,7 @@ conda activate rom_logger
 
 安装依赖库：
 
-pip install Flask pandas numpy openpyxl
+conda install Flask pandas numpy openpyxl
 
 这将自动下载并安装项目运行所需的所有 Python 包。
 
