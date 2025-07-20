@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROM 日常数据记录</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ROM 日常数据记录</h1>
+        <form id="data-form">
+            <!-- Part 1: Morning Core Metrics -->
+            <fieldset>
+                <legend>第一部分：晨间核心指标 (睡醒后立即填写)</legend>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="date">日期</label>
+                        <input type="date" id="date" name="日期" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sleep_duration">睡眠总时长 (小时)</label>
+                        <input type="number" step="0.1" id="sleep_duration" name="睡眠总时长（小时）">
+                    </div>
+                    <div class="form-group">
+                        <label for="sleep_quality">睡眠质量 (1-5分)</label>
+                        <input type="number" min="1" max="5" id="sleep_quality" name="睡眠质量 (1-5分)">
+                    </div>
+                    <div class="form-group">
+                        <label for="night_awakenings">夜醒次数</label>
+                        <input type="number" min="0" id="night_awakenings" name="夜醒次数">
+                    </div>
+                    <div class="form-group">
+                        <label for="rhr">静息心率 RHR (bpm)</label>
+                        <input type="number" min="0" id="rhr" name="静息心率 RHR (bpm)">
+                    </div>
+                    <div class="form-group">
+                        <label for="hrv">心率变异性 HRV (ms)</label>
+                        <input type="number" min="0" id="hrv" name="心率变异性 HRV (ms)">
+                    </div>
+                    <div class="form-group">
+                        <label for="rrr">静息呼吸频率 RRR (次/分)</label>
+                        <input type="number" min="0" id="rrr" name="静息呼吸频率 RRR (次/分)">
+                    </div>
+                    <div class="form-group srt-group">
+                        <label for="srt">简单反应时 SRT (ms)</label>
+                        <input type="number" id="srt" name="简单反应时 SRT (ms)" readonly placeholder="点击开始测试">
+                        <button type="button" id="start-srt-btn">开始测试</button>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>梦境是否愉悦</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="dream_pleasant_1" name="梦境是否愉悦（0/1）" value="1"><label for="dream_pleasant_1">是</label>
+                            <input type="radio" id="dream_pleasant_0" name="梦境是否愉悦（0/1）" value="0" checked><label for="dream_pleasant_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>梦境是否困惑</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="dream_confusing_1" name="梦境是否困惑（0/1）" value="1"><label for="dream_confusing_1">是</label>
+                            <input type="radio" id="dream_confusing_0" name="梦境是否困惑（0/1）" value="0" checked><label for="dream_confusing_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>梦境是否恐惧</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="dream_fearful_1" name="梦境是否恐惧（0/1）" value="1"><label for="dream_fearful_1">是</label>
+                            <input type="radio" id="dream_fearful_0" name="梦境是否恐惧（0/1）" value="0" checked><label for="dream_fearful_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dream_tags">梦境标签 (如飞翔、考试)</label>
+                        <input type="text" id="dream_tags" name="梦境标签（如飞翔、考试）">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="dream_summary">梦境梗概 (一句话)</label>
+                        <input type="text" id="dream_summary" name="梦境梗概（一句话）">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Part 2: Daytime Log -->
+            <fieldset>
+                <legend>第二部分：日间日志 (全天或睡前填写)</legend>
+                <div class="form-grid">
+                    <!-- Breakfast -->
+                    <h3 class="full-width">早餐</h3>
+                    <div class="form-group toggle-group"><label>含蛋白</label><div class="toggle-switch"><input type="radio" id="bf_protein_1" name="早餐是否含蛋白（0/1）" value="1"><label for="bf_protein_1">是</label><input type="radio" id="bf_protein_0" name="早餐是否含蛋白（0/1）" value="0" checked><label for="bf_protein_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含蔬菜</label><div class="toggle-switch"><input type="radio" id="bf_veg_1" name="早餐是否含蔬菜（0/1）" value="1"><label for="bf_veg_1">是</label><input type="radio" id="bf_veg_0" name="早餐是否含蔬菜（0/1）" value="0" checked><label for="bf_veg_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含谷物</label><div class="toggle-switch"><input type="radio" id="bf_grain_1" name="早餐是否含谷物（0/1）" value="1"><label for="bf_grain_1">是</label><input type="radio" id="bf_grain_0" name="早餐是否含谷物（0/1）" value="0" checked><label for="bf_grain_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含脂肪</label><div class="toggle-switch"><input type="radio" id="bf_fat_1" name="早餐是否含脂肪（0/1）" value="1"><label for="bf_fat_1">是</label><input type="radio" id="bf_fat_0" name="早餐是否含脂肪（0/1）" value="0" checked><label for="bf_fat_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含水果</label><div class="toggle-switch"><input type="radio" id="bf_fruit_1" name="早餐是否含水果（0/1）" value="1"><label for="bf_fruit_1">是</label><input type="radio" id="bf_fruit_0" name="早餐是否含水果（0/1）" value="0" checked><label for="bf_fruit_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含加工品（如半成品、料理包）</label><div class="toggle-switch"><input type="radio" id="bf_processed_1" name="早餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="1"><label for="bf_processed_1">是</label><input type="radio" id="bf_processed_0" name="早餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="0" checked><label for="bf_processed_0">否</label></div></div>
+                    <div class="form-group radio-group full-width"><label>早餐后精力</label><div><input type="radio" id="bf_energy_1" name="早餐后精力（1：困倦；2：平平；3：充沛）" value="1"><label for="bf_energy_1">1:困倦</label><input type="radio" id="bf_energy_2" name="早餐后精力（1：困倦；2：平平；3：充沛）" value="2"><label for="bf_energy_2">2:平平</label><input type="radio" id="bf_energy_3" name="早餐后精力（1：困倦；2：平平；3：充沛）" value="3"><label for="bf_energy_3">3:充沛</label></div></div>
+
+                    <!-- Lunch -->
+                    <h3 class="full-width">午餐</h3>
+                    <div class="form-group toggle-group"><label>含蛋白</label><div class="toggle-switch"><input type="radio" id="lunch_protein_1" name="午餐是否含蛋白（0/1）" value="1"><label for="lunch_protein_1">是</label><input type="radio" id="lunch_protein_0" name="午餐是否含蛋白（0/1）" value="0" checked><label for="lunch_protein_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含蔬菜</label><div class="toggle-switch"><input type="radio" id="lunch_veg_1" name="午餐是否含蔬菜（0/1）" value="1"><label for="lunch_veg_1">是</label><input type="radio" id="lunch_veg_0" name="午餐是否含蔬菜（0/1）" value="0" checked><label for="lunch_veg_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含谷物</label><div class="toggle-switch"><input type="radio" id="lunch_grain_1" name="午餐是否含谷物（0/1）" value="1"><label for="lunch_grain_1">是</label><input type="radio" id="lunch_grain_0" name="午餐是否含谷物（0/1）" value="0" checked><label for="lunch_grain_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含脂肪</label><div class="toggle-switch"><input type="radio" id="lunch_fat_1" name="午餐是否含脂肪（0/1）" value="1"><label for="lunch_fat_1">是</label><input type="radio" id="lunch_fat_0" name="午餐是否含脂肪（0/1）" value="0" checked><label for="lunch_fat_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含水果</label><div class="toggle-switch"><input type="radio" id="lunch_fruit_1" name="午餐是否含水果（0/1）" value="1"><label for="lunch_fruit_1">是</label><input type="radio" id="lunch_fruit_0" name="午餐是否含水果（0/1）" value="0" checked><label for="lunch_fruit_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含加工品（如半成品、料理包）</label><div class="toggle-switch"><input type="radio" id="lunch_processed_1" name="午餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="1"><label for="lunch_processed_1">是</label><input type="radio" id="lunch_processed_0" name="午餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="0" checked><label for="lunch_processed_0">否</label></div></div>
+                    <div class="form-group radio-group full-width"><label>午餐后精力</label><div><input type="radio" id="lunch_energy_1" name="午餐后精力（1：困倦；2：平平；3：充沛）" value="1"><label for="lunch_energy_1">1:困倦</label><input type="radio" id="lunch_energy_2" name="午餐后精力（1：困倦；2：平平；3：充沛）" value="2"><label for="lunch_energy_2">2:平平</label><input type="radio" id="lunch_energy_3" name="午餐后精力（1：困倦；2：平平；3：充沛）" value="3"><label for="lunch_energy_3">3:充沛</label></div></div>
+
+                    <!-- Dinner -->
+                    <h3 class="full-width">晚餐</h3>
+                    <div class="form-group toggle-group"><label>含蛋白</label><div class="toggle-switch"><input type="radio" id="dinner_protein_1" name="晚餐是否含蛋白（0/1）" value="1"><label for="dinner_protein_1">是</label><input type="radio" id="dinner_protein_0" name="晚餐是否含蛋白（0/1）" value="0" checked><label for="dinner_protein_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含蔬菜</label><div class="toggle-switch"><input type="radio" id="dinner_veg_1" name="晚餐是否含蔬菜（0/1）" value="1"><label for="dinner_veg_1">是</label><input type="radio" id="dinner_veg_0" name="晚餐是否含蔬菜（0/1）" value="0" checked><label for="dinner_veg_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含谷物</label><div class="toggle-switch"><input type="radio" id="dinner_grain_1" name="晚餐是否含谷物（0/1）" value="1"><label for="dinner_grain_1">是</label><input type="radio" id="dinner_grain_0" name="晚餐是否含谷物（0/1）" value="0" checked><label for="dinner_grain_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含脂肪</label><div class="toggle-switch"><input type="radio" id="dinner_fat_1" name="晚餐是否含脂肪（0/1）" value="1"><label for="dinner_fat_1">是</label><input type="radio" id="dinner_fat_0" name="晚餐是否含脂肪（0/1）" value="0" checked><label for="dinner_fat_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含水果</label><div class="toggle-switch"><input type="radio" id="dinner_fruit_1" name="晚餐是否含水果（0/1）" value="1"><label for="dinner_fruit_1">是</label><input type="radio" id="dinner_fruit_0" name="晚餐是否含水果（0/1）" value="0" checked><label for="dinner_fruit_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含加工品（如半成品、料理包）</label><div class="toggle-switch"><input type="radio" id="dinner_processed_1" name="晚餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="1"><label for="dinner_processed_1">是</label><input type="radio" id="dinner_processed_0" name="晚餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="0" checked><label for="dinner_processed_0">否</label></div></div>
+                    <div class="form-group radio-group full-width"><label>晚餐后精力</label><div><input type="radio" id="dinner_energy_1" name="晚餐后精力（1：困倦；2：平平；3：充沛）" value="1"><label for="dinner_energy_1">1:困倦</label><input type="radio" id="dinner_energy_2" name="晚餐后精力（1：困倦；2：平平；3：充沛）" value="2"><label for="dinner_energy_2">2:平平</label><input type="radio" id="dinner_energy_3" name="晚餐后精力（1：困倦；2：平平；3：充沛）" value="3"><label for="dinner_energy_3">3:充沛</label></div></div>
+                    
+                    <!-- Snacks -->
+                    <h3 class="full-width">加餐</h3>
+                    <div class="form-group toggle-group"><label>含蛋白</label><div class="toggle-switch"><input type="radio" id="snack_protein_1" name="加餐是否含蛋白（0/1）" value="1"><label for="snack_protein_1">是</label><input type="radio" id="snack_protein_0" name="加餐是否含蛋白（0/1）" value="0" checked><label for="snack_protein_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含蔬菜</label><div class="toggle-switch"><input type="radio" id="snack_veg_1" name="加餐是否含蔬菜（0/1）" value="1"><label for="snack_veg_1">是</label><input type="radio" id="snack_veg_0" name="加餐是否含蔬菜（0/1）" value="0" checked><label for="snack_veg_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含谷物</label><div class="toggle-switch"><input type="radio" id="snack_grain_1" name="加餐是否含谷物（0/1）" value="1"><label for="snack_grain_1">是</label><input type="radio" id="snack_grain_0" name="加餐是否含谷物（0/1）" value="0" checked><label for="snack_grain_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含脂肪</label><div class="toggle-switch"><input type="radio" id="snack_fat_1" name="加餐是否含脂肪（0/1）" value="1"><label for="snack_fat_1">是</label><input type="radio" id="snack_fat_0" name="加餐是否含脂肪（0/1）" value="0" checked><label for="snack_fat_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含水果</label><div class="toggle-switch"><input type="radio" id="snack_fruit_1" name="加餐是否含水果（0/1）" value="1"><label for="snack_fruit_1">是</label><input type="radio" id="snack_fruit_0" name="加餐是否含水果（0/1）" value="0" checked><label for="snack_fruit_0">否</label></div></div>
+                    <div class="form-group toggle-group"><label>含加工品</label><div class="toggle-switch"><input type="radio" id="snack_processed_1" name="加餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="1"><label for="snack_processed_1">是</label><input type="radio" id="snack_processed_0" name="加餐是否含加工品（如半成品、调味料、料理包）（0/1）" value="0" checked><label for="snack_processed_0">否</label></div></div>
+
+                    <!-- Other Day Log -->
+                    <h3 class="full-width">其他</h3>
+                    <div class="form-group">
+                        <label for="oxygen_exercise_duration">有氧运动时长 (分钟)</label>
+                        <input type="number" min="0" id="oxygen_exercise_duration" name="有氧 (分钟)">
+                    </div>
+                    <div class="form-group">
+                        <label for="power_exercise_duration">力量运动时长 (分钟)</label>
+                        <input type="number" min="0" id="power_exercise_duration" name="力量 (分钟)">
+                    </div>
+                    <div class="form-group">
+                        <label for="flexibility_exercise_duration">柔韧（拉伸、瑜伽等）运动时长 (分钟)</label>
+                        <input type="number" min="0" id="flexibility_exercise_duration" name="柔韧（拉伸、瑜伽等） (分钟)">
+                    </div>
+                    <div class="form-group">
+                        <label for="balance_exercise_duration">平衡（平衡练习、太极等）运动时长 (分钟)</label>
+                        <input type="number" min="0" id="balance_exercise_duration" name="平衡（平衡练习、太极等） (分钟)">
+                    </div>
+                    <div class="form-group">
+                        <label for="exercise_intensity">运动强度 (1-5分)</label>
+                        <input type="number" min="1" max="5" id="exercise_intensity" name="运动强度 (1-5分)">
+                    </div>
+                    <div class="form-group radio-group full-width">
+                        <label>运动后精力</label>
+                        <div><input type="radio" id="post_exercise_energy_1" name="运动后精力（1：困倦；2：平平；3：充沛）" value="1"><label for="post_exercise_energy_1">1:困倦</label><input type="radio" id="post_exercise_energy_2" name="运动后精力（1：困倦；2：平平；3：充沛）" value="2"><label for="post_exercise_energy_2">2:平平</label><input type="radio" id="post_exercise_energy_3" name="运动后精力（1：困倦；2：平平；3：充沛）" value="3"><label for="post_exercise_energy_3">3:充沛</label></div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>咖啡因摄入</label>
+                        <div class="toggle-switch"><input type="radio" id="caffeine_1" name="咖啡因摄入（0/1）" value="1"><label for="caffeine_1">是</label><input type="radio" id="caffeine_0" name="咖啡因摄入（0/1）" value="0" checked><label for="caffeine_0">否</label></div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否摄入其他零食</label>
+                        <div class="toggle-switch"><input type="radio" id="snack_other_1" name="是否摄入其他零食（0/1）" value="1"><label for="snack_other_1">是</label><input type="radio" id="snack_other_0" name="是否摄入其他零食（0/1）" value="0" checked><label for="snack_other_0">否</label></div>
+                    </div>
+                     <div class="form-group toggle-group">
+                        <label>酒精摄入</label>
+                        <div class="toggle-switch"><input type="radio" id="alcohol_1" name="酒精摄入（0/1）" value="1"><label for="alcohol_1">是</label><input type="radio" id="alcohol_0" name="酒精摄入（0/1）" value="0" checked><label for="alcohol_0">否</label></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="water_intake">水分摄入（mL）</label>
+                        <input type="number" min="0" id="water_intake" name="水分摄入（mL）">
+                    </div>
+                    <div class="form-group">
+                        <label for="mindfulness_duration">正念/冥想时长 (分钟)</label>
+                        <input type="number" min="0" id="mindfulness_duration" name="正念/冥想时长（分钟）">
+                    </div>
+                    <div class="form-group">
+                        <label for="outdoor_duration">户外时长 (分钟)</label>
+                        <input type="number" min="0" id="outdoor_duration" name="户外时长 (分钟)">
+                    </div>
+                    <div class="form-group">
+                        <label for="nap_duration">午睡时长 (分钟)</label>
+                        <input type="number" min="0" id="nap_duration" name="午睡时长 (分钟)">
+                    </div>
+                    <div class="form-group">
+                        <label for="work_duration">学习/工作时长 (小时)</label>
+                        <input type="number" step="0.1" min="0" id="work_duration" name="学习/工作时长（小时）">
+                    </div>
+                    <div class="form-group">
+                        <label for="work_focus">学习/工作专注度 (1-5分)</label>
+                        <input type="number" min="1" max="5" id="work_focus" name="学习/工作专注度 (1-5分)">
+                    </div>
+                    <div class="form-group">
+                        <label for="day_mood">日间情绪 (-2 ~ +2)</label>
+                        <input type="number" min="-2" max="2" id="day_mood" name="日间情绪（-2 ~ +2）">
+                    </div>
+                    <div class="form-group">
+                        <label for="day_energy">日间精力 (1-5分)</label>
+                        <input type="number" min="1" max="5" id="day_energy" name="日间精力 (1-5分)">
+                    </div>
+                    <div class="form-group">
+                        <label for="day_ailment_intensity">日间病痛强度 (1-5分)</label>
+                        <input type="number" min="1" max="5" id="day_ailment_intensity" name="日间病痛强度 (1-5分)">
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>着装是否自信</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="attire_confident_1" name="着装是否自信（0/1）" value="1"><label for="attire_confident_1">是</label>
+                            <input type="radio" id="attire_confident_0" name="着装是否自信（0/1）" value="0" checked><label for="attire_confident_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>着装是否舒适</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="attire_comfortable_1" name="着装是否舒适（0/1）" value="1"><label for="attire_comfortable_1">是</label>
+                            <input type="radio" id="attire_comfortable_0" name="着装是否舒适（0/1）" value="0" checked><label for="attire_comfortable_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>着装是否正式</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="attire_formal_1" name="着装是否正式（0/1）" value="1"><label for="attire_formal_1">是</label>
+                            <input type="radio" id="attire_formal_0" name="着装是否正式（0/1）" value="0" checked><label for="attire_formal_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>着装是否有创意</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="attire_creative_1" name="着装是否有创意（0/1）" value="1"><label for="attire_creative_1">是</label>
+                            <input type="radio" id="attire_creative_0" name="着装是否有创意（0/1）" value="0" checked><label for="attire_creative_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>着装是否不自在</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="attire_uneasy_1" name="着装是否不自在（0/1）" value="1"><label for="attire_uneasy_1">是</label>
+                            <input type="radio" id="attire_uneasy_0" name="着装是否不自在（0/1）" value="0" checked><label for="attire_uneasy_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="screen_time_work">屏幕使用时间：工作 (h)</label>
+                        <input type="number" step="0.1" min="0" id="screen_time_work" name="屏幕使用时间：工作（h）">
+                    </div>
+                    <div class="form-group">
+                        <label for="screen_time_social">屏幕使用时间：社交 (h)</label>
+                        <input type="number" step="0.1" min="0" id="screen_time_social" name="屏幕使用时间：社交（h）">
+                    </div>
+                    <div class="form-group">
+                        <label for="screen_time_entertainment">屏幕使用时间：娱乐、消费 (h)</label>
+                        <input type="number" step="0.1" min="0" id="screen_time_entertainment" name="屏幕使用时间：娱乐、消费（h）">
+                    </div>
+                    <div class="form-group">
+                        <label for="screen_time_learning">屏幕使用时间：自发学习、创造 (h)</label>
+                        <input type="number" step="0.1" min="0" id="screen_time_learning" name="屏幕使用时间：自发学习、创造（h）">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Part 3: Evening Reflection -->
+            <fieldset>
+                <legend>第三部分：晚间反思 (睡前填写)</legend>
+                <div class="form-grid">
+                     <div class="form-group">
+                        <label for="meaningful_interactions">有意义互动次数</label>
+                        <input type="number" min="0" id="meaningful_interactions" name="有意义互动次数">
+                    </div>
+                    <div class="form-group">
+                        <label for="connection_sense">连接感 (1-5分)</label>
+                        <input type="number" min="1" max="5" id="connection_sense" name="连接感（1-5）">
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否感到愉悦/感恩</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="emotion_pleasant_1" name="是否感到愉悦/感恩（0/1）" value="1"><label for="emotion_pleasant_1">是</label>
+                            <input type="radio" id="emotion_pleasant_0" name="是否感到愉悦/感恩（0/1）" value="0" checked><label for="emotion_pleasant_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否感到平静/满足</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="emotion_calm_1" name="是否感到平静/满足（0/1）" value="1"><label for="emotion_calm_1">是</label>
+                            <input type="radio" id="emotion_calm_0" name="是否感到平静/满足（0/1）" value="0" checked><label for="emotion_calm_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否感到焦虑/压力</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="emotion_anxious_1" name="是否感到焦虑/压力（0/1）" value="1"><label for="emotion_anxious_1">是</label>
+                            <input type="radio" id="emotion_anxious_0" name="是否感到焦虑/压力（0/1）" value="0" checked><label for="emotion_anxious_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否感到悲伤/孤独</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="emotion_sad_1" name="是否感到悲伤/孤独（0/1）" value="1"><label for="emotion_sad_1">是</label>
+                            <input type="radio" id="emotion_sad_0" name="是否感到悲伤/孤独（0/1）" value="0" checked><label for="emotion_sad_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否感到愤怒/沮丧</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="emotion_angry_1" name="是否感到愤怒/沮丧（0/1）" value="1"><label for="emotion_angry_1">是</label>
+                            <input type="radio" id="emotion_angry_0" name="是否感到愤怒/沮丧（0/1）" value="0" checked><label for="emotion_angry_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group toggle-group">
+                        <label>是否感到疲惫</label>
+                        <div class="toggle-switch">
+                            <input type="radio" id="emotion_tired_1" name="是否感到疲惫（0/1）" value="1"><label for="emotion_tired_1">是</label>
+                            <input type="radio" id="emotion_tired_0" name="是否感到疲惫（0/1）" value="0" checked><label for="emotion_tired_0">否</label>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="emotion_trigger_summary">情绪触发点简述</label>
+                        <textarea id="emotion_trigger_summary" name="简述前面回答“1”的情绪的产生情境或触发点"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="facial_skin_age">面部皮肤年龄 (岁)</label>
+                        <input type="number" min="0" id="facial_skin_age" name="面部皮肤年龄（岁）">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="free_log">自由日志 (任何想法、高光或低谷时刻)</label>
+                        <textarea id="free_log" name="自由日志（任何想法、高光或低谷时刻）"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="submit-btn">保存数据到Excel</button>
+        </form>
+    </div>
+
+    <!-- SRT Modal -->
+    <div id="srt-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div id="srt-instructions">
+                <h2>简单反应时测试</h2>
+                <p>当屏幕中央出现<span class="stimulus-example">■</span>时，请尽快按下<strong>空格键</strong>。</p>
+                <p>共进行5次测试，结果将取平均值。</p>
+                <button id="srt-start-trials">准备好了，开始测试</button>
+            </div>
+            <div id="srt-test-area" style="display: none;">
+                <div id="srt-stimulus"></div>
+                <div id="srt-feedback"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Message Modal -->
+    <div id="message-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <p id="message-text"></p>
+            <button id="message-ok-btn">好的</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
