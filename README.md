@@ -30,11 +30,11 @@ Excel 文件读写: openpyxl
 ## 安装与设置
 在运行此项目之前，您需要先设置好您的本地环境。推荐使用 Anaconda 来管理 Python 环境和依赖包。
 
-第 1 步：先决条件
+### 第 1 步：先决条件
 
 确保您的电脑上已经安装了 Anaconda 或 Miniconda。
 
-第 2 步：创建并激活 Conda 虚拟环境
+### 第 2 步：创建并激活 Conda 虚拟环境
 
 打开您的终端（在 Windows 上是 Anaconda Prompt，在 macOS 或 Linux 上是 Terminal），然后执行以下命令。
 
@@ -50,7 +50,7 @@ conda activate rom_logger
 
 激活成功后，您会看到终端提示符前面出现了 (rom_logger) 的字样。
 
-第 3 步：安装项目依赖
+### 第 3 步：安装项目依赖
 
 在此虚拟环境中，我们需要安装 Flask、Pandas 等必要的库。
 
@@ -71,7 +71,6 @@ pip install Flask pandas numpy openpyxl
 
 python app.py
 
-## 访问应用：
 启动成功后，您会看到类似以下的输出：
 
 Starting Flask server...
