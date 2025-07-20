@@ -74,7 +74,9 @@ python app.py
 启动成功后，您会看到类似以下的输出：
 
 Starting Flask server...
+
 Data will be saved to '.../ROM数据模板.xlsx'
+
 Open http://127.0.0.1:5000 in your browser.
 
 在您的浏览器中打开网址 http://127.0.0.1:5000，即可开始使用。
