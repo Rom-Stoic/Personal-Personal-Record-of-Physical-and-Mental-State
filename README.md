@@ -15,9 +15,13 @@
 ## 文件结构
 .
 ├── app.py                  # Flask 后端主程序
+
 ├── index.html              # 前端网页结构
+
 ├── script.js               # 前端交互逻辑
+
 ├── style.css               # 前端页面样式
+
 └── ROM数据模板.xlsx        # 用于存储数据模板和记录的Excel文件
 
 ## 环境配置与安装
